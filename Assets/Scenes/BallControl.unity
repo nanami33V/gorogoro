@@ -373,7 +373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779248137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3333335, y: 3, z: -10}
+  m_LocalPosition: {x: 6.6698813, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -892,6 +892,7 @@ GameObject:
   - component: {fileID: 1759004477}
   - component: {fileID: 1759004476}
   - component: {fileID: 1759004475}
+  - component: {fileID: 1759004478}
   m_Layer: 0
   m_Name: maru
   m_TagString: Untagged
@@ -1004,6 +1005,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1759004478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1759004473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0946575cf38bc4a9ebec12ad12ed3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDirection: {x: 0, y: 0}
+  NONnormalized: {x: 0, y: 0}
+  speed: 300
 --- !u!1 &1907234810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85d652b4e51363c4384b4ddf20e8df35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_YPosition: 3
+  m_YPosition: 2
 --- !u!114 &1907234812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1081,7 +1097,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1907234810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3333335, y: 3, z: -10}
+  m_LocalPosition: {x: 6.6698813, y: 2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
