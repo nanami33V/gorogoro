@@ -24,7 +24,6 @@ public class arrowControl : MonoBehaviour
         rectTrans.localScale = scale;
 
 
-        Z =new Vector2 ;
         rectTrans.rotation = Quaternion.Euler(0, 0, Z);
     }
 }
