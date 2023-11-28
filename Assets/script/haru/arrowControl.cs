@@ -6,6 +6,7 @@ public class arrowControl : MonoBehaviour
 {
     RectTransform rectTrans;
     BallControl ball;
+    private Vector2 set = Vector2.up;
     public float bairitu;
     private float Z,scaleY;
 
@@ -23,7 +24,8 @@ public class arrowControl : MonoBehaviour
         scale.y = scaleY;
         rectTrans.localScale = scale;
 
-
-        rectTrans.rotation = Quaternion.Euler(0, 0, Z);
+        Z = Vector2.SignedAngle(ball.NONnormalized,set);
+        rectTrans.rotation = Quaternion.Euler(0, 0, -Z);
+        //Debug.Log(-Z+90);
     }
 }

@@ -8,9 +8,11 @@ public class BallControl : MonoBehaviour
 	Rigidbody2D rigi;
 	Vector2 startPos, endPos;
 	public Vector2 startDirection, NONnormalized;
-	public float speed;
+	public float speedX,speedY, LimitSpeed,tei;
 
-
+	public groundCheck ground;
+	private bool isGround = false,canJamp=false;
+	private float HowLong;
 	void Start()
 	{
 		rigi = GetComponent<Rigidbody2D>();
@@ -18,21 +20,52 @@ public class BallControl : MonoBehaviour
 
 	void Update()
 	{
-
+		ground.IsGround();
+		isGround = ground.isGround;
+		if(canJamp==false&isGround)
+        {
+			canJamp = true;
+        }
 		// マウスの動きと反対方向に発射される
-		if (Input.GetMouseButtonDown(0))
+		if (canJamp==true)
 		{
-			startPos = Input.mousePosition;
+			if (Input.GetMouseButtonDown(0))
+			{
+				startPos = Input.mousePosition;
+			}
+			else if (Input.GetMouseButton(0))
+			{
+				endPos = Input.mousePosition;
+				startDirection = -1 * (endPos - startPos).normalized;
+				NONnormalized = -1 * (endPos - startPos);
+			}
+			else if (Input.GetMouseButtonUp(0))
+			{
+				HowLong = Mathf.Log(NONnormalized.magnitude, tei);
+				Vector2 shousai = new Vector2(startDirection.x * speedX, startDirection.y * speedY);
+				rigi.AddForce(shousai*HowLong);
+				canJamp = false;
+				Debug.Log(HowLong);
+			}
 		}
-		else if (Input.GetMouseButton(0))
+
+		//速度制限
+		if(rigi.velocity.x>LimitSpeed)
+		{ 
+			rigi.velocity = new Vector2(LimitSpeed, rigi.velocity.y);
+		}
+		//Debug.Log(rigi.velocity.x);
+		/*if(startDirection.x<0)
+        {
+			rigi.velocity = new Vector2(-LimitSpeed, rigi.velocity.y);
+		}
+		else if (startDirection.x > 0)
 		{
-			endPos = Input.mousePosition;
-			startDirection = -1 * (endPos - startPos).normalized;
-			NONnormalized = -1 * (endPos - startPos);
+			rigi.velocity = new Vector2(LimitSpeed, rigi.velocity.y);
 		}
-		else if (Input.GetMouseButtonUp(0))
-		{
-			rigi.AddForce(startDirection * speed);
-		}
+        else
+        {
+			rigi.velocity = new Vector2(0, rigi.velocity.y);
+		}*/
 	}
 }
