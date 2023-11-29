@@ -10,18 +10,27 @@ public class arrowControl : MonoBehaviour
     public float bairitu;
     private float Z,scaleY;
 
+   
     void Start()
     {
         rectTrans = GetComponent<RectTransform>();
         ball = FindObjectOfType<BallControl>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        scaleY = ball.NONnormalized.magnitude * bairitu;
         Vector2 scale = rectTrans.localScale;
-        scale.x = 1f;
-        scale.y = scaleY;
+        scale.y = 0;
+        if (ball.tap == false)
+        {
+            scale.y = 0;
+        }
+        else
+        {
+            scaleY = ball.NONnormalized.magnitude * bairitu;
+            scale.x = 1f;
+            scale.y = scaleY;
+        }
         rectTrans.localScale = scale;
 
         Z = Vector2.SignedAngle(ball.NONnormalized,set);

@@ -13,9 +13,13 @@ public class BallControl : MonoBehaviour
 	public groundCheck ground;
 	private bool isGround = false,canJamp=false;
 	private float HowLong;
+
+	public bool tap=false;
+	OutCheck outcheck;
 	void Start()
 	{
 		rigi = GetComponent<Rigidbody2D>();
+		outcheck = FindObjectOfType<OutCheck>();
 	}
 
 	void Update()
@@ -32,6 +36,7 @@ public class BallControl : MonoBehaviour
 			if (Input.GetMouseButtonDown(0))
 			{
 				startPos = Input.mousePosition;
+				tap = true;
 			}
 			else if (Input.GetMouseButton(0))
 			{
@@ -41,11 +46,11 @@ public class BallControl : MonoBehaviour
 			}
 			else if (Input.GetMouseButtonUp(0))
 			{
-				HowLong = Mathf.Log(NONnormalized.magnitude, tei);
+				if(NONnormalized.magnitude>0)HowLong = Mathf.Log(NONnormalized.magnitude, tei);
 				Vector2 shousai = new Vector2(startDirection.x * speedX, startDirection.y * speedY);
-				rigi.AddForce(shousai*HowLong);
-				canJamp = false;
-				Debug.Log(HowLong);
+                rigi.AddForce(shousai*HowLong);
+                canJamp = false;
+				tap = false;
 			}
 		}
 
@@ -53,6 +58,12 @@ public class BallControl : MonoBehaviour
 		if(rigi.velocity.x>LimitSpeed)
 		{ 
 			rigi.velocity = new Vector2(LimitSpeed, rigi.velocity.y);
+		}
+
+		if(outcheck.reset==true)
+        {
+			rigi.velocity = new Vector2(0f,0f);
+			outcheck.reset=false;
 		}
 		//Debug.Log(rigi.velocity.x);
 		/*if(startDirection.x<0)

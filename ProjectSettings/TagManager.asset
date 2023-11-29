@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+  - Out
+  - MainObj
   layers:
   - Default
   - TransparentFX
@@ -12,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - gameover
   - 
   - 
   - 
@@ -39,6 +41,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: back
+    uniqueID: 3180645931
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2391709571
+    locked: 0
+  - name: mask
+    uniqueID: 1514059249
     locked: 0
