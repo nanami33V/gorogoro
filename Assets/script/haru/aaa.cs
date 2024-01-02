@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class aaa : MonoBehaviour
 {
@@ -28,5 +29,6 @@ public class aaa : MonoBehaviour
     {
         //click‚Ìˆ—
         Debug.Log("Clicked");
+        SceneManager.LoadScene("StageTest");
     }
 }
