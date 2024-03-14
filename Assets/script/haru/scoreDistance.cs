@@ -7,8 +7,9 @@ public class scoreDistance : MonoBehaviour
 {
     public GameObject maruInput;
     [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI HighscoreText;
 
-    private int score;
+    private float score=0;
     public int log;
     Vector2 startPosition;
     Vector2 nowPosition;
@@ -22,8 +23,9 @@ public class scoreDistance : MonoBehaviour
     void Update()
     {
         nowPosition = new Vector2(maruInput.transform.position.x, maruInput.transform.position.y);
-
         float scorenum = Mathf.Round((nowPosition.x - startPosition.x) * log);
-        scoreText.text = "Score:"+scorenum.ToString()+"m";//‰æ–Ê‚É”½‰f
+        if (score < scorenum) score = scorenum;
+        scoreText.text = "Score:" + scorenum.ToString() + "m";//‰æ–Ê‚É”½‰f
+        HighscoreText.text = "Score:" + score.ToString() + "m";//‰æ–Ê‚É”½‰f
     }
 }

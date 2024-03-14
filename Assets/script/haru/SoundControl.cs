@@ -19,7 +19,6 @@ public class SoundControl : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(m_MyAudioSource.time);
         if(!m_MyAudioSource.isPlaying&&m_MyAudioSource.time==0)
         {
             Debug.Log("aa");
