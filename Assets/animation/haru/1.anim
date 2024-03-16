@@ -244,7 +244,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 1
-    functionName: endGet3
+    functionName: callGet3
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

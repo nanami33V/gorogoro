@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BallControl : MonoBehaviour
 {
-
+	[SerializeField] GameManager gameManager;
 	Rigidbody2D rigi;
+
 	Vector2 startPos, endPos;
 	public Vector2 startDirection, NONnormalized, startSpeed;
 	public float speedX,speedY, LimitSpeed,tei;
@@ -18,13 +19,13 @@ public class BallControl : MonoBehaviour
 	bool DoPlay = false;
 	
 	OutCheck outcheck;
+
 	void Start()
 	{
 		rigi = GetComponent<Rigidbody2D>();
 		outcheck = FindObjectOfType<OutCheck>();
 
 		rigi.AddForce(startSpeed);
-
 	}
 
 	void Update()
@@ -71,25 +72,14 @@ public class BallControl : MonoBehaviour
 		{ 
 			rigi.velocity = new Vector2(LimitSpeed, rigi.velocity.y);
 		}
-
-		if(outcheck.reset==true)
-        {
-			rigi.velocity = new Vector2(0f,0f);
-			outcheck.reset=false;
-		}
-		//Debug.Log(rigi.velocity.x);
-		/*if(startDirection.x<0)
-        {
-			rigi.velocity = new Vector2(-LimitSpeed, rigi.velocity.y);
-		}
-		else if (startDirection.x > 0)
+	}
+	//gameoverîªíË
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.CompareTag("Out"))
 		{
-			rigi.velocity = new Vector2(LimitSpeed, rigi.velocity.y);
+			gameManager.GameOver();
 		}
-        else
-        {
-			rigi.velocity = new Vector2(0, rigi.velocity.y);
-		}*/
 	}
 	private IEnumerator PlayDo() // ëÄçÏÇâ¬î\Ç…Ç∑ÇÈ
 	{
