@@ -5,27 +5,25 @@ using TMPro;
 
 public class scoreDistance : MonoBehaviour
 {
-    public GameObject maruInput;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] TextMeshProUGUI HighscoreText;
-
-    private float score=0;
-    public int log;
-    Vector2 startPosition;
-    Vector2 nowPosition;
-
+    [SerializeField] TextMeshProUGUI NowscoreText;
+   
     void Start()
     {
-        startPosition = new Vector2(maruInput.transform.position.x,maruInput.transform.position.y);
+        if (GameManager.instance != null)
+        {
+            scoreText.text = "Score:" + GameManager.instance.score+"m";//最大記録表示
+            NowscoreText.text = "Score:" + GameManager.instance.nowscore + "m";//現在の位置表示
+        }
+        else
+        {
+            Debug.Log("ゲームマネージャー置き忘れてるよ！");
+            Destroy(this);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        nowPosition = new Vector2(maruInput.transform.position.x, maruInput.transform.position.y);
-        float scorenum = Mathf.Round((nowPosition.x - startPosition.x) * log);
-        if (score < scorenum) score = scorenum;
-        scoreText.text = "Score:" + scorenum.ToString() + "m";//画面に反映
-        HighscoreText.text = "Score:" + score.ToString() + "m";//画面に反映
+        scoreText.text = "Score:" + GameManager.instance.score + "m";//画面に反映
+        NowscoreText.text = "Score:" + GameManager.instance.nowscore + "m";//画面に反映
     }
 }

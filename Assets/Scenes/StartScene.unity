@@ -1095,7 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClickImage: {fileID: 1034316190}
-  sceneName: StageTest haru
+  sceneName: StartScene
   loadingUI: {fileID: 494335546}
 --- !u!114 &1034316193
 MonoBehaviour:
@@ -1584,7 +1584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClickImage: {fileID: 1447363533}
-  sceneName: StageTest haru
+  sceneName: StartScene
   loadingUI: {fileID: 494335546}
 --- !u!114 &1447363532
 MonoBehaviour:

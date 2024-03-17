@@ -13,7 +13,7 @@ public class OutCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("MainObj"))
+        if (collision.gameObject.CompareTag("Out"))
         {
             GameOver.SetActive(true);
             reset = true;
