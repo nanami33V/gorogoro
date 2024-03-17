@@ -27,7 +27,7 @@ public class BallControl : MonoBehaviour
 
 	}
 
-	void Update()
+	void LateUpdate()
 	{
 		
 		ground.IsGround();
