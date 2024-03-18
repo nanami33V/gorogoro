@@ -8,10 +8,13 @@ public class BallCtrl : MonoBehaviour
     public Vector2 startSpeed = new Vector2(0.0f, 0.0f);
 
     [Header("速度制限")]
-    public float LimitSpeed;
+    public float LimitSpeed = 1;
 
     [Header("発射倍率")]
-    public float magnification;
+    public float magnification = 1;
+
+    [Header("ジャンプ回数")]
+    public int maxJumpCount= 2;
 
     Rigidbody2D rb2d;
     public groundCheck ground;
@@ -19,19 +22,20 @@ public class BallCtrl : MonoBehaviour
     OutCheck outcheck;
     Vector2 startPos, endPos;
 
-    private Vector2 startDirection;
+    public Vector2 startDirection;
 
-    private bool isGround;
-    private bool isTap;
+    public bool isTap = false;
 
-    bool DoPlay = false;
+    int jumpCount = 0;
+    public bool isGround;
+    bool DoPlay = true;
 
     
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         outcheck = FindObjectOfType<OutCheck>();
-
+        //Application.targetFrameRate = 30;
         rb2d.AddForce(startSpeed);
 
     }
@@ -40,29 +44,33 @@ public class BallCtrl : MonoBehaviour
     {
         isGround = ground.isGround;
         
-        if (isGround)
+        if (isGround && jumpCount < maxJumpCount)
         {
             if (Input.GetMouseButtonDown(0))
             {
                 startPos = Input.mousePosition;
                 isTap = true;
             }
-            else if (Input.GetMouseButtonUp(0))
+            else if (Input.GetMouseButton(0))//arrowに送るために毎フレーム計算
             {
                 endPos = Input.mousePosition;
-                startDirection = -1 * (endPos - startPos).normalized;
-
-                rb2d.AddForce(startDirection * magnification);
-                
+                startDirection = -1 * (endPos - startPos);
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                rb2d.AddForce(startDirection.normalized * magnification);
+                jumpCount++;
                 isTap = false;
             }
         }
 
+        Debug.Log(rb2d.velocity);
         //速度制限
         if (rb2d.velocity.x > LimitSpeed)
         {
             rb2d.velocity = new Vector2(LimitSpeed, rb2d.velocity.y);
         }
+        
 
         //落下したら止める
         if (outcheck.reset)

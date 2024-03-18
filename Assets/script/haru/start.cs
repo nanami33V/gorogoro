@@ -8,6 +8,7 @@ public class start : MonoBehaviour
     public distanceScript distance;
     private void Start()
     {
+        Debug.Log("カウントダウン開始");
         gameManager.animNum5();
     }
     public void callGet1()

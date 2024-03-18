@@ -72,7 +72,6 @@ public class PlaneMove : MonoBehaviour
             {
                 lastPointY -= 2;
             }
-            Debug.Log(lastPointY);
             ActiveChunk[i] = Instantiate(Planes[planenum], new Vector2(lastPointX, lastPointY), Quaternion.identity);
             ActiveChunk[i].transform.localScale = new Vector2(planeScale, ActiveChunk[i].transform.localScale.y);
 

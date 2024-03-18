@@ -1,44 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
     RectTransform arrow;
-    BallCtrl ball;
+    BallCtrl ballctrl;
 
     [Header("–îˆó‚Ì‘å‚«‚³")]
     public float magnification;
 
-    private Vector2 set = Vector2.up;
-    private float Z, scaleY;
+    private Vector2 scale;
+    private float z;
 
 
     void Start()
     {
         arrow = GetComponent<RectTransform>();
-        ball = FindObjectOfType<BallCtrl>();
-
-
+        ballctrl = FindObjectOfType<BallCtrl>();
     }
 
     void Update()
     {
-        /*
-        if (ball.isTap == false)
+        if (ballctrl.isTap)
         {
-            scale.y = 0;
+            arrow.localScale = new Vector2(1.0f, ballctrl.startDirection.magnitude * magnification);
         }
         else
         {
-            arrow.localScale.y = ball.startDirectione * magnification;
-            scale.x = 1f;
+            arrow.localScale = Vector2.zero;
         }
-        arrow.localScale = scale;
 
-        Z = Vector2.SignedAngle(ball.NONnormalized, set);
-        arrow.rotation = Quaternion.Euler(0, 0, -Z);
-        //Debug.Log(-Z+90);
-        */
+        z = Vector2.SignedAngle(Vector2.up, ballctrl.startDirection);
+        arrow.rotation = Quaternion.Euler(0, 0, z);
+        
     }
 }

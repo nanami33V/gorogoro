@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    public static GameManager instance = null;
+    public static UIManager instance { get; private set; }
+
     //メイン操作キャラ
     public BallControl ballcon;
     public GameObject ball;
@@ -24,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverObj;
     private void Awake()
     {
+        /*
         if (instance == null)
         {
             instance = this;
@@ -33,11 +33,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        */
     }
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1;
         animMain1.GetComponent<Animator>();
         animMain2.GetComponent<Animator>();
         animMain3.GetComponent<Animator>();
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
     //start時のアニメーション処理と動作可能処理
 
-   
+
     public void animNum1()
     {
         animMain2.SetTrigger("2triger");
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         animMain3.SetTrigger("3triger");
     }
-   
+
 
     //GameOver時に起動
     public void GameOver()
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
-   
+
 
     // Start is called before the first frame update
     /*public IEnumerator GameStart()
