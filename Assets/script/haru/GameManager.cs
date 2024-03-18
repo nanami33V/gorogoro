@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     //score管理
     public float score = 0;
     public float nowscore = 0;
+    //sound管理
+    public AudioSource myAudioSource;
+
+    [SerializeField] 
+     AudioClip[] clipAudio;
 
     public GameObject GameOverObj;
     private void Awake()
@@ -43,6 +48,7 @@ public class GameManager : MonoBehaviour
         animMainG.GetComponent<Animator>();
         animMainO.GetComponent<Animator>();
         GameOverObj.SetActive(false);
+        myAudioSource = GetComponent<AudioSource>();
     }
 
     //start時のアニメーション処理と動作可能処理
@@ -51,19 +57,23 @@ public class GameManager : MonoBehaviour
     public void animNum1()
     {
         animMain2.SetTrigger("2triger");
+        myAudioSource.PlayOneShot(clipAudio[0]);
     }
     public void animNum2()
     {
         animMain1.SetTrigger("1triger");
+        myAudioSource.PlayOneShot(clipAudio[0]);
     }
     public void animNum3()
-    {
+    {    
         animMainG.SetTrigger("Gtriger");
         animMainO.SetTrigger("Otriger");
+        myAudioSource.PlayOneShot(clipAudio[0]);
     }
     public void animNum4()
     {
         ballcon.CallPlayDo();
+        myAudioSource.PlayOneShot(clipAudio[1]);
     }
     public void animNum5()
     {
@@ -75,7 +85,6 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         GameOverObj.SetActive(true);
-        Time.timeScale = 0;
     }
 
    
