@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7101626501199813736}
   - component: {fileID: 7101626501199813737}
-  - component: {fileID: 7101626501199813743}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de1c3e394cd3fe4891d93d581e276f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreObj: {fileID: 0}
   ballcon: {fileID: 0}
   ball: {fileID: 0}
   animMain1: {fileID: 0}
@@ -54,18 +54,6 @@ MonoBehaviour:
   animMainO: {fileID: 0}
   score: 0
   nowscore: 0
+  myAudioSource: {fileID: 0}
+  clipAudio: []
   GameOverObj: {fileID: 0}
---- !u!114 &7101626501199813743
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7101626501199813738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d6e3ba6ab98c674db4cb00f1d737191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  NowscoreText: {fileID: 0}

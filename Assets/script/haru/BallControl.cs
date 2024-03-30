@@ -17,14 +17,12 @@ public class BallControl : MonoBehaviour
 
 	public bool tap=false;
 	bool DoPlay = false;
-	
-	OutCheck outcheck;
 
 	void Start()
 	{
 		rigi = GetComponent<Rigidbody2D>();
-		outcheck = FindObjectOfType<OutCheck>();
 
+		gameManager.GameOverStop();
 		rigi.AddForce(startSpeed);
 	}
 
@@ -79,6 +77,7 @@ public class BallControl : MonoBehaviour
 		if (collision.gameObject.CompareTag("Out"))
 		{
 			gameManager.GameOver();
+			this.gameObject.SetActive(false);
 		}
 	}
 	private IEnumerator PlayDo() // ëÄçÏÇâ¬î\Ç…Ç∑ÇÈ

@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class scoreDistance : MonoBehaviour
+public class scoreDisplay: MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI NowscoreText;
-   
+
+    [SerializeField] TextMeshProUGUI ResultScoreText;
+
     void Start()
     {
         if (GameManager.instance != null)
         {
-            scoreText.text = "Score:" + GameManager.instance.score+"m";//ç≈ëÂãLò^ï\é¶
+            scoreText.text = "HighScore:" + GameManager.instance.Highscore+"m";//ç≈ëÂãLò^ï\é¶
             NowscoreText.text = "Score:" + GameManager.instance.nowscore + "m";//åªç›ÇÃà íuï\é¶
         }
         else
@@ -23,7 +25,7 @@ public class scoreDistance : MonoBehaviour
     }
     private void Update()
     {
-        scoreText.text = "Score:" + GameManager.instance.score + "m";//âÊñ Ç…îΩâf
         NowscoreText.text = "Score:" + GameManager.instance.nowscore + "m";//âÊñ Ç…îΩâf
+        ResultScoreText.text = GameManager.instance.nowscore + "m";
     }
 }
