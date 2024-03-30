@@ -19,7 +19,7 @@ public class BallCtrl : MonoBehaviour
     Rigidbody2D rb2d;
     public groundCheck ground;
 
-    OutCheck outcheck;
+    //// //;
     Vector2 startPos, endPos;
 
     public Vector2 startDirection;
@@ -34,7 +34,7 @@ public class BallCtrl : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        outcheck = FindObjectOfType<OutCheck>();
+        // = FindObjectOfType<//>();
         //Application.targetFrameRate = 30;
         rb2d.AddForce(startSpeed);
 
@@ -70,13 +70,14 @@ public class BallCtrl : MonoBehaviour
             rb2d.velocity = new Vector2(LimitSpeed, rb2d.velocity.y);
         }
         
-
+        /*
         //óéâ∫ÇµÇΩÇÁé~ÇﬂÇÈ
-        if (outcheck.reset)
+        if (//.reset)
         {
             rb2d.velocity = new Vector2(0f, 0f);
-            outcheck.reset = false;
+            //.reset = false;
         }
+        */
 
     }
     private IEnumerator PlayDo() // ëÄçÏÇâ¬î\Ç…Ç∑ÇÈ
