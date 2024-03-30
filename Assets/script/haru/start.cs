@@ -26,6 +26,13 @@ public class start : MonoBehaviour
     {
         gameManager.animNum4();
         distance.Callstart();
-
+    }
+    public void callGet6()
+    {
+        gameManager.animNum6();
+    }
+    public void callAcFalse()
+    {
+        gameManager.StartActiveFalse();
     }
 }

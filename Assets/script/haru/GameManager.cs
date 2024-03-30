@@ -16,19 +16,25 @@ public class GameManager : MonoBehaviour
     public Animator animMain3;
     public Animator animMainG;
     public Animator animMainO;
+    public Animator animResult;
 
     //score管理
-    public float score = 0;
+    public float Endscore;
+    public float Highscore;
     public float nowscore = 0;
+    public distanceScript distance;
+
     //sound管理
-    public AudioSource myAudioSource;
+    public AudioSource SEAudioSource;
 
     [SerializeField] 
      AudioClip[] clipAudio;
 
     public GameObject GameOverObj;
+    public GameObject Startobj;
     private void Awake()
     {
+        Debug.Log("start");
         if (instance == null)
         {
             instance = this;
@@ -38,6 +44,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        StartActiveTrue();
     }
     // Start is called before the first frame update
     void Start()
@@ -47,65 +54,63 @@ public class GameManager : MonoBehaviour
         animMain3.GetComponent<Animator>();
         animMainG.GetComponent<Animator>();
         animMainO.GetComponent<Animator>();
+        animResult.GetComponent<Animator>();
         GameOverObj.SetActive(false);
-        myAudioSource = GetComponent<AudioSource>();
     }
 
-    //start時のアニメーション処理と動作可能処理
+    //start時のアニメーション処理と動作可能処理+SE処理
 
    
     public void animNum1()
     {
         animMain2.SetTrigger("2triger");
-        myAudioSource.PlayOneShot(clipAudio[0]);
+        SEAudioSource.PlayOneShot(clipAudio[0]);
     }
     public void animNum2()
     {
         animMain1.SetTrigger("1triger");
-        myAudioSource.PlayOneShot(clipAudio[0]);
+        SEAudioSource.PlayOneShot(clipAudio[0]);
     }
     public void animNum3()
     {    
         animMainG.SetTrigger("Gtriger");
         animMainO.SetTrigger("Otriger");
-        myAudioSource.PlayOneShot(clipAudio[0]);
+        SEAudioSource.PlayOneShot(clipAudio[0]);
     }
     public void animNum4()
     {
         ballcon.CallPlayDo();
-        myAudioSource.PlayOneShot(clipAudio[1]);
     }
     public void animNum5()
     {
         animMain3.SetTrigger("3triger");
     }
-   
+    public void animNum6()
+    {
+        SEAudioSource.PlayOneShot(clipAudio[1]);
+    }
+
 
     //GameOver時に起動
     public void GameOver()
     {
         GameOverObj.SetActive(true);
+        animResult.SetTrigger("result");
+        distance.SaveSt();
+
+    }
+    //GameOver終了の時使用
+    public void GameOverStop()
+    {
+        GameOverObj.SetActive(false);
     }
 
-   
-
-    // Start is called before the first frame update
-    /*public IEnumerator GameStart()
+    public void StartActiveTrue()
     {
-        yield return new WaitForSeconds(waitTime);
-        centerText.enabled = true;
-        centerText.text = "3";
-        yield return new WaitForSeconds(1);
-        centerText.text = "2";
-        yield return new WaitForSeconds(1);
-        centerText.text = "1";
-        yield return new WaitForSeconds(1);
-        centerText.text = "GO!!";
-        firstPerson.playerCanMove = true;
-        firstPerson.enableCameraMovement = true;
-        gunCOntroller.shootEnabled = true;
-        yield return new WaitForSeconds(1);
-        centerText.text = "";
-        centerText.enabled = false;
-    }*/
+        Startobj.gameObject.SetActive(true);
+    }
+    public void StartActiveFalse()
+    {
+        Startobj.gameObject.SetActive(false);
+    }
 }
