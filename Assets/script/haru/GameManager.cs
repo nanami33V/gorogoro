@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
     //メイン操作キャラ
     public BallControl ballcon;
-    public GameObject ball;
     //アニメーション取得
     public Animator animMain1;
     public Animator animMain2;
@@ -49,7 +48,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1;
+        Application.targetFrameRate = 30;
         animMain1.GetComponent<Animator>();
         animMain2.GetComponent<Animator>();
         animMain3.GetComponent<Animator>();
@@ -57,36 +56,37 @@ public class GameManager : MonoBehaviour
         animMainO.GetComponent<Animator>();
         animResult.GetComponent<Animator>();
         GameOverObj.SetActive(false);
+        
     }
 
     //start時のアニメーション処理と動作可能処理+SE処理
 
-   
+
     public void animNum1()
-    {
-        animMain2.SetTrigger("2triger");
-        SEAudioSource.PlayOneShot(clipAudio[0]);
-    }
-    public void animNum2()
     {
         animMain1.SetTrigger("1triger");
         SEAudioSource.PlayOneShot(clipAudio[0]);
     }
+    public void animNum2()
+    {
+        animMain2.SetTrigger("2triger");
+        SEAudioSource.PlayOneShot(clipAudio[0]);
+    }
     public void animNum3()
+    {
+        animMain3.SetTrigger("3triger");
+    }
+    public void animNumPlay()
+    {
+        ballcon.CallPlayDo();
+    }
+    public void animNumGO()
     {    
         animMainG.SetTrigger("Gtriger");
         animMainO.SetTrigger("Otriger");
         SEAudioSource.PlayOneShot(clipAudio[0]);
     }
-    public void animNum4()
-    {
-        ballcon.CallPlayDo();
-    }
-    public void animNum5()
-    {
-        animMain3.SetTrigger("3triger");
-    }
-    public void animNum6()
+    public void CallSeGo()
     {
         SEAudioSource.PlayOneShot(clipAudio[1]);
     }

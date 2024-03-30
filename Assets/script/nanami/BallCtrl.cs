@@ -16,8 +16,9 @@ public class BallCtrl : MonoBehaviour
     [Header("ジャンプ回数")]
     public int maxJumpCount= 2;
 
+    [SerializeField] GameManager gameManager;
     Rigidbody2D rb2d;
-    public groundCheck ground;
+    public Ground ground;
 
     //// //;
     Vector2 startPos, endPos;
@@ -34,6 +35,7 @@ public class BallCtrl : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        gameManager.GameOverStop();
         // = FindObjectOfType<//>();
         //Application.targetFrameRate = 30;
         rb2d.AddForce(startSpeed);
@@ -43,24 +45,27 @@ public class BallCtrl : MonoBehaviour
     void Update()
     {
         isGround = ground.isGround;
-        
-        if (isGround && jumpCount < maxJumpCount)
+
+        if (DoPlay == true)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (isGround && jumpCount < maxJumpCount)
             {
-                startPos = Input.mousePosition;
-                isTap = true;
-            }
-            else if (Input.GetMouseButton(0))//arrowに送るために毎フレーム計算
-            {
-                endPos = Input.mousePosition;
-                startDirection = -1 * (endPos - startPos);
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                rb2d.AddForce(startDirection.normalized * magnification);
-                jumpCount++;
-                isTap = false;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    startPos = Input.mousePosition;
+                    isTap = true;
+                }
+                else if (Input.GetMouseButton(0))//arrowに送るために毎フレーム計算
+                {
+                    endPos = Input.mousePosition;
+                    startDirection = -1 * (endPos - startPos);
+                }
+                else if (Input.GetMouseButtonUp(0))
+                {
+                    rb2d.AddForce(startDirection.normalized * magnification);
+                    jumpCount++;
+                    isTap = false;
+                }
             }
         }
 

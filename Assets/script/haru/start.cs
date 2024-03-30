@@ -9,7 +9,7 @@ public class start : MonoBehaviour
     private void Start()
     {
         Debug.Log("カウントダウン開始");
-        gameManager.animNum5();
+        gameManager.animNum3();
     }
     public void callGet1()
     {
@@ -19,21 +19,21 @@ public class start : MonoBehaviour
     {
         gameManager.animNum2();
     }
-    public void callGet3()
+    public void callGetGO()
     {
-        gameManager.animNum3();
+        gameManager.animNumGO();
     }
-    public void callGet4()
+    public void callGetPlay()
     {
-        gameManager.animNum4();
+        gameManager.animNumPlay();
         distance.Callstart();
-    }
-    public void callGet6()
-    {
-        gameManager.animNum6();
     }
     public void callAcFalse()
     {
         gameManager.StartActiveFalse();
+    }
+    public void callSE()
+    {
+        gameManager.CallSeGo();
     }
 }

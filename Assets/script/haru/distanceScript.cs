@@ -45,4 +45,6 @@ public class distanceScript : MonoBehaviour
     {
         StartCoroutine("startPos");
     }
+
+
 }

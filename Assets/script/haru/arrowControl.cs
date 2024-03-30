@@ -4,37 +4,32 @@ using UnityEngine;
 
 public class arrowControl : MonoBehaviour
 {
-    RectTransform rectTrans;
+    RectTransform arrowRect;
     BallControl ball;
-    private Vector2 set = Vector2.up;
-    public float bairitu;
-    private float Z,scaleY;
 
-   
+    [Header("–îˆó‚Ì‘å‚«‚³")]
+    public float magnification;
+
+    private float z;
+
     void Start()
     {
-        rectTrans = GetComponent<RectTransform>();
+        arrowRect = GetComponent<RectTransform>();
         ball = FindObjectOfType<BallControl>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        Vector2 scale = rectTrans.localScale;
-        scale.y = 0;
-        if (ball.tap == false)
+        if (ball.tap)
         {
-            scale.y = 0;
+            arrowRect.localScale = new Vector2(1.0f, ball.startDirection.magnitude * magnification);
         }
         else
         {
-            scaleY = ball.NONnormalized.magnitude * bairitu;
-            scale.x = 1f;
-            scale.y = scaleY;
+            arrowRect.localScale = Vector2.zero;
         }
-        rectTrans.localScale = scale;
 
-        Z = Vector2.SignedAngle(ball.NONnormalized,set);
-        rectTrans.rotation = Quaternion.Euler(0, 0, -Z);
-        //Debug.Log(-Z+90);
+        z = Vector2.SignedAngle(Vector2.up, ball.startDirection);
+        arrowRect.rotation = Quaternion.Euler(0, 0, z);
     }
 }
