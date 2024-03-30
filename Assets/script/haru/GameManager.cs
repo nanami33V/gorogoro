@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         animMainG.GetComponent<Animator>();
         animMainO.GetComponent<Animator>();
         GameOverObj.SetActive(false);
-        myAudioSource = GetComponent<AudioSource>();
+        //myAudioSource = GetComponent<AudioSource>();
     }
 
     //start時のアニメーション処理と動作可能処理

@@ -64,7 +64,6 @@ public class BallCtrl : MonoBehaviour
             }
         }
 
-        Debug.Log(rb2d.velocity);
         //‘¬“x§ŒÀ
         if (rb2d.velocity.x > LimitSpeed)
         {

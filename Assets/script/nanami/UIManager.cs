@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance { get; private set; }
+    public static UIManager instance = null;
 
     //メイン操作キャラ
-    public BallControl ballcon;
+    public BallCtrl ballcon;
     public GameObject ball;
     //アニメーション取得
     public Animator animMain1;
@@ -38,6 +38,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         animMain1.GetComponent<Animator>();
         animMain2.GetComponent<Animator>();
         animMain3.GetComponent<Animator>();
