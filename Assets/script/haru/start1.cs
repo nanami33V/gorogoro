@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class start : MonoBehaviour
+public class start1 : MonoBehaviour
 {
     public GameManager gameManager;
-    public distanceScript distance;
+    public distanceScriptTime distance;
     private void Start()
     {
         Debug.Log("カウントダウン開始");
+        gameManager.StartActiveTrue();
         gameManager.animNum3();
     }
     //animationの中にセットする
@@ -24,7 +25,7 @@ public class start : MonoBehaviour
     {
         gameManager.animNumGO();
     }
-    
+   
     public void callAcFalse()
     {
         gameManager.StartActiveFalse();
@@ -32,6 +33,7 @@ public class start : MonoBehaviour
     public void callSE()
     {
         gameManager.CallSeGo();
+        gameManager.DoPlayTime = true;
         distance.Callstart();
     }
 }

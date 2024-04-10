@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: 30d6affcc2f71d84b8bb5663dd18516d
   - enabled: 1
-    path: Assets/Scenes/StageTest.unity
+    path: 
     guid: 2beadf253167f2f4885c2d95a99853c7
   - enabled: 1
-    path: Assets/Scenes/StageTest haru.unity
+    path: Assets/Scenes/StageTest endless.unity
     guid: ab5130ed222da8a4a8fabacb1d559e17
+  - enabled: 1
+    path: Assets/Scenes/StageTest timeAttack.unity
+    guid: 8551c18d863336a449318dfc113387ac
   m_configObjects: {}

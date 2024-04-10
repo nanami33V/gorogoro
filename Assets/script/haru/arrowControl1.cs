@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class arrowControl : MonoBehaviour
+public class arrowControl1 : MonoBehaviour
 {
     RectTransform arrowRect;
-    BallControl ball;
+    BallControlTime ball;
 
     [Header("–îˆó‚Ì‘å‚«‚³")]
     public float magnification;
@@ -15,7 +15,7 @@ public class arrowControl : MonoBehaviour
     void Start()
     {
         arrowRect = GetComponent<RectTransform>();
-        ball = FindObjectOfType<BallControl>();
+        ball = FindObjectOfType<BallControlTime>();
     }
 
     void Update()

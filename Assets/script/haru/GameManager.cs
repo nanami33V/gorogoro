@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-    //メイン操作キャラ
-    public BallControl ballcon;
+   //操作していいか制御する
+    public bool DoPlay = false;
+    public bool DoPlayTime = false;
     //アニメーション取得
     public Animator animMain1;
     public Animator animMain2;
@@ -21,14 +22,14 @@ public class GameManager : MonoBehaviour
     public float Endscore;
     public float Highscore;
     public float nowscore = 0;
-    public distanceScript distance;
+    public float TimeScore;
+    public float BestTimeScore;
 
     //sound管理
     public AudioSource SEAudioSource;
-
     [SerializeField] 
      AudioClip[] clipAudio;
-
+    //オブジェクトアタッチ
     public GameObject GameOverObj;
     public GameObject Startobj;
     private void Awake()
@@ -44,24 +45,21 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         StartActiveTrue();
+        GameOverObj.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 30;//フレームレート固定
         animMain1.GetComponent<Animator>();
         animMain2.GetComponent<Animator>();
         animMain3.GetComponent<Animator>();
         animMainG.GetComponent<Animator>();
         animMainO.GetComponent<Animator>();
         animResult.GetComponent<Animator>();
-        GameOverObj.SetActive(false);
-        
     }
 
     //start時のアニメーション処理と動作可能処理+SE処理
-
-
     public void animNum1()
     {
         animMain1.SetTrigger("1triger");
@@ -76,10 +74,6 @@ public class GameManager : MonoBehaviour
     {
         animMain3.SetTrigger("3triger");
     }
-    public void animNumPlay()
-    {
-        ballcon.CallPlayDo();
-    }
     public void animNumGO()
     {    
         animMainG.SetTrigger("Gtriger");
@@ -89,7 +83,9 @@ public class GameManager : MonoBehaviour
     public void CallSeGo()
     {
         SEAudioSource.PlayOneShot(clipAudio[1]);
+        DoPlay = true;
     }
+    
 
 
     //GameOver時に起動
@@ -97,8 +93,7 @@ public class GameManager : MonoBehaviour
     {
         GameOverObj.SetActive(true);
         animResult.SetTrigger("result");
-        distance.SaveSt();
-
+        SEAudioSource.PlayOneShot(clipAudio[3]);
     }
     //GameOver終了の時使用
     public void GameOverStop()
@@ -106,12 +101,20 @@ public class GameManager : MonoBehaviour
         GameOverObj.SetActive(false);
     }
 
+    //カウントダウンのimageを表示
     public void StartActiveTrue()
     {
         Startobj.gameObject.SetActive(true);
     }
+    //カウントダウンのimageを非表示
     public void StartActiveFalse()
     {
         Startobj.gameObject.SetActive(false);
+    }
+    public void Goal()//ゴール時の処理
+    {
+        SEAudioSource.PlayOneShot(clipAudio[2]);
+        GameOverObj.SetActive(true);
+        animResult.SetTrigger("result");
     }
 }

@@ -13,12 +13,12 @@ public class distanceScript : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        GameManager.instance.Endscore= PlayerPrefs.GetFloat("EndScore", 0);
-        GameManager.instance.Highscore = PlayerPrefs.GetFloat("HighScore", 0);
+        GameManager.instance.Endscore= PlayerPrefs.GetFloat("EndScore", 0);//前回のスコアをセーブデータから取得
+        GameManager.instance.Highscore = PlayerPrefs.GetFloat("HighScore", 0);//最高スコアをセーブデータから取得
     }
     void Update()
     {
-        if (GameManager.instance != null&&startGame==true)
+        if (GameManager.instance != null&&startGame==true)//位置を取得
         {
             nowPosition = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y);
             scoreNow = Mathf.Round((nowPosition.x - startPosition.x) * log);
@@ -26,12 +26,9 @@ public class distanceScript : MonoBehaviour
         GameManager.instance.nowscore = scoreNow;
 
     }
-    public void SaveSt()
+    public void SaveSt()//セーブする
     {
-        if(GameManager.instance.Highscore<scoreNow)
-        {
-            PlayerPrefs.SetFloat("HighScore", scoreNow);
-        }
+        if(GameManager.instance.Highscore<scoreNow) PlayerPrefs.SetFloat("HighScore", scoreNow);
         PlayerPrefs.SetFloat("EndScore", scoreNow);
         PlayerPrefs.Save();
     }

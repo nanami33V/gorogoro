@@ -10,7 +10,7 @@ public class groundCheck : MonoBehaviour
 
     //接地判定を返すメソッド
     //物理判定の更新毎に呼ぶ必要がある
-    public void IsGround()
+    public bool IsGround()
     {
         if (isGroundEnter || isGroundStay)
         {
@@ -24,6 +24,7 @@ public class groundCheck : MonoBehaviour
         isGroundEnter = false;
         isGroundStay = false;
         isGroundExit = false;
+        return isGround;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

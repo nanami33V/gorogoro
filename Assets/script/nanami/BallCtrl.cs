@@ -35,7 +35,6 @@ public class BallCtrl : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        gameManager.GameOverStop();
         // = FindObjectOfType<//>();
         //Application.targetFrameRate = 30;
         rb2d.AddForce(startSpeed);

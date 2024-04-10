@@ -44,16 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de1c3e394cd3fe4891d93d581e276f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreObj: {fileID: 0}
-  ballcon: {fileID: 0}
-  ball: {fileID: 0}
+  DoPlay: 0
+  DoPlayTime: 0
   animMain1: {fileID: 0}
   animMain2: {fileID: 0}
   animMain3: {fileID: 0}
   animMainG: {fileID: 0}
   animMainO: {fileID: 0}
-  score: 0
+  animResult: {fileID: 0}
+  Endscore: 0
+  Highscore: 0
   nowscore: 0
-  myAudioSource: {fileID: 0}
-  clipAudio: []
+  TimeScore: 0
+  BestTimeScore: 0
+  SEAudioSource: {fileID: 0}
+  clipAudio:
+  - {fileID: 8300000, guid: bf0b22c1d6686f54998e90de5f0a1145, type: 3}
+  - {fileID: 8300000, guid: 5b41796797f5f1c41afd3cf52356f91a, type: 3}
+  - {fileID: 8300000, guid: dad55be6b3f7ab2448ffbfb4c9298095, type: 3}
   GameOverObj: {fileID: 0}
+  Startobj: {fileID: 0}

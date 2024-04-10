@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class harurum : MonoBehaviour
+public class GroundCreation: MonoBehaviour
 {
     public GameObject[] Planes;
     public GameObject Maru;
@@ -47,7 +47,7 @@ public class harurum : MonoBehaviour
         for (int i = 0; i < chunkSize; i++)
         {
             int planeScale = Random.Range(defaltPlanesScale / 2, defaltPlanesScale * 2 + 1); //床の幅を0.5倍～2倍までランダムに変える
-            int holeSize = Random.Range(2, 10); //穴の幅
+            int holeSize = Random.Range(6, 10); //穴の幅
             int planeHeight = Random.Range(-2, 2);//高さをランダムに変える
             int selectplane = Random.Range(0, 100);
             if (selectplane < 50)
@@ -63,9 +63,10 @@ public class harurum : MonoBehaviour
                 planenum = 2;
             }
 
-            //右端のオブジェクトと新たに生成されるオブジェクトを
+            //右端のオブジェクトと新たに生成されるオブジェクトを取得
             lastPointX += planeScale / 2 + holeSize;
             lastPointY -= Planes[0].transform.localScale.y / 2 + planeHeight;
+            //高さを制限するための計算
             if (lastPointY < -10)
             {
                 lastPointY += 2;
@@ -75,6 +76,7 @@ public class harurum : MonoBehaviour
                 lastPointY -= 2;
             }
             Debug.Log("高さは"+(11+lastPointY));
+            //地面生成
             ActiveChunk[i] = Instantiate(Planes[planenum], new Vector2(lastPointX, lastPointY), Quaternion.identity);
             ActiveChunk[i].transform.localScale = new Vector2(planeScale, ActiveChunk[i].transform.localScale.y);
 
