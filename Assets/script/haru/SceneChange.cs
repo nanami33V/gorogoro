@@ -42,6 +42,7 @@ public class SceneChange : MonoBehaviour
 
     private IEnumerator Load()
     {
+        Time.timeScale = 1;//timeScaleを0にする処理を行っている場所があるため消したらバグる
         // ロード画面を表示する
         loadingUI.SetActive(true);
 

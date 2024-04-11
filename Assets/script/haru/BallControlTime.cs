@@ -73,6 +73,7 @@ public class BallControlTime : MonoBehaviour
 				if (Input.GetMouseButtonDown(0))//押された判定取得
 				{
 					startPos = Input.mousePosition;
+					startDirection = new Vector2(0, 0);
 					tap = true;
 				}
 				else if (Input.GetMouseButton(0))//ベクトルの大きさ情報を取得
@@ -92,7 +93,7 @@ public class BallControlTime : MonoBehaviour
 			}
 		}
 	}
-	void LimitSpeed()//速度制限
+	void LimitSpeed()//速度制限（xが速すぎると描画できない速度になってしまう、yが小さすぎると矢印で変化するジャンプ量の差が亡くなってしまう）
 	{
 		if (rigi.velocity.x > LimitSpeedx) rigi.velocity = new Vector2(LimitSpeedx, rigi.velocity.y);
 		if (-rigi.velocity.x > LimitSpeedx) rigi.velocity = new Vector2(-LimitSpeedx, rigi.velocity.y);

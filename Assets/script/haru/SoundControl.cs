@@ -6,7 +6,6 @@ public class SoundControl : MonoBehaviour
 {
     // Start is called before the first frame update
     public AudioSource m_MyAudioSource;
-    public float vol;
     [SerializeField]
     private AudioClip[] clips;
 
@@ -19,10 +18,9 @@ public class SoundControl : MonoBehaviour
 
     private void Update()
     {
+        //ˆê’èŠÔŒv‘ª‚·‚é‚Æ•Ê‚Ì‰¹Œ¹‚ÉØ‚è‘Ö‚í‚é
         if(!m_MyAudioSource.isPlaying&&m_MyAudioSource.time==0)
         {
-            Debug.Log("aa");
-            m_MyAudioSource.volume = vol;
             m_MyAudioSource.clip = clips[1];
             m_MyAudioSource.Play();
         }
